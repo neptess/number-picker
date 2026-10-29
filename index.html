@@ -22,6 +22,10 @@
   --ball-ink: #3a2a00;
   --drawn: #f3ecd0;
   --drawn-ink: #a89f80;
+  --cell: #e2f3df;
+  --cell-line: #bcdcb6;
+  --pick: #2e7d32;
+  --pick-ink: #ffffff;
   --font-display: "Jua", "Gowun Dodum", system-ui, sans-serif;
   --font-body: "Gowun Dodum", system-ui, -apple-system, "Malgun Gothic", sans-serif;
 }
@@ -29,13 +33,15 @@
   :root:not([data-theme="light"]) {
     --bg: #121826; --surface: #1b2335; --ink: #e8ecf5; --muted: #98a3bb; --line: #2c364d;
     --accent: #6f8fff; --accent-ink: #0d1424; --ball: #ffcf52; --ball-ink: #2e2200;
-    --drawn: #232c40; --drawn-ink: #5b6680; color-scheme: dark;
+    --drawn: #232c40; --drawn-ink: #5b6680;
+    --cell: #1e3324; --cell-line: #2e4c35; --pick: #4caf50; --pick-ink: #0b1a0d; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #121826; --surface: #1b2335; --ink: #e8ecf5; --muted: #98a3bb; --line: #2c364d;
   --accent: #6f8fff; --accent-ink: #0d1424; --ball: #ffcf52; --ball-ink: #2e2200;
-  --drawn: #232c40; --drawn-ink: #5b6680; color-scheme: dark;
+  --drawn: #232c40; --drawn-ink: #5b6680;
+    --cell: #1e3324; --cell-line: #2e4c35; --pick: #4caf50; --pick-ink: #0b1a0d; color-scheme: dark;
 }
 
 body {
@@ -110,13 +116,13 @@ h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; mar
 .cell {
   aspect-ratio: 1; max-width: 100%;
   display: grid; place-items: center;
-  border: 1px solid var(--line); border-radius: 10px;
-  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--cell-line); border-radius: 10px;
+  background: var(--cell); color: var(--ink);
   font-size: 1.1rem; font-variant-numeric: tabular-nums;
   transition: background .2s, color .2s;
 }
 .cell.drawn { background: var(--drawn); color: var(--drawn-ink); text-decoration: line-through; }
-.cell.latest { background: var(--ball); color: var(--ball-ink); border-color: var(--ball); text-decoration: none; }
+.cell.latest { background: var(--pick); color: var(--pick-ink); border-color: var(--pick); text-decoration: none; font-weight: 700; }
 .cell.flash { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 
 .history { font-size: .95rem; color: var(--muted); line-height: 1.7; }
@@ -170,7 +176,7 @@ h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; mar
   <section>
     <div class="board-head">
       <h2>번호판</h2>
-      <span class="legend">줄 그어진 번호는 이미 뽑혔어요 · 노란색은 방금 뽑은 번호</span>
+      <span class="legend">줄 그어진 번호는 이미 뽑혔어요 · 진한 초록은 방금 뽑은 번호</span>
     </div>
     <div class="board" id="board"></div>
   </section>
